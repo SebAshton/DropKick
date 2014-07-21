@@ -94,3 +94,14 @@ QUnit.test( "Checks if multi select is true", 1, function( assert ) {
 
   assert.equal(dk_multi.multiple, true);
 });
+
+QUnit.test( "Dropkick refreshes correctly on mobile", 2, function( assert ) {
+  var dk = new Dropkick("#normal_select");
+  window.isMobile = true;
+  document.getElementById('normal_select').innerHTML = '<option>New Option</option>';
+  assert.notEqual(dk.length, 1);
+  dk.refresh();
+  assert.equal(dk.length, 1);
+  window.isMobile = false;
+});
+

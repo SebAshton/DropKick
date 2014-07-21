@@ -19,9 +19,13 @@ var
   Dropkick = function( sel, opts ) {
     var i, j;
 
+    if ( typeof sel === "string" && sel[0] === "#" ) {
+      sel = document.getElementById( sel.substr( 1 ) );
+    }
+
     // On dk.refresh() and isMobile == true, opts is undefined
-    if (typeof(opts) == 'undefined') {
-      if (j = sel.getAttribute( "data-dkcacheid")) {
+    if (typeof(opts) === 'undefined') {
+      if (j = sel.getAttribute("data-dkcacheid")) {
         opts = dkCache[ j ].data.settings;
       }
     }
@@ -34,10 +38,6 @@ var
     // Safety if `Dropkick` is called without `new`
     if ( this === window ) {
       return new Dropkick( sel, opts );
-    }
-
-    if ( typeof sel === "string" && sel[0] === "#" ) {
-      sel = document.getElementById( sel.substr( 1 ) );
     }
 
     // Check if select has already been DK'd and return the DK Object
