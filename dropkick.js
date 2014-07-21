@@ -17,7 +17,14 @@ var
 
   // The Dropkick Object
   Dropkick = function( sel, opts ) {
-    var i;
+    var i, j;
+
+    // On dk.refresh() and isMobile == true, opts is undefined
+    if (typeof(opts) == 'undefined') {
+      if (j = sel.getAttribute( "data-dkcacheid")) {
+        opts = dkCache[ j ].data.settings;
+      }
+    }
 
     // Prevent DK on mobile
     if ( window.isMobile && !opts.mobile ) {
