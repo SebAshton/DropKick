@@ -96,8 +96,8 @@ QUnit.test( "Checks if multi select is true", 1, function( assert ) {
 });
 
 QUnit.test( "Dropkick refreshes correctly on mobile", 2, function( assert ) {
-  var dk = new Dropkick("#normal_select");
   window.isMobile = true;
+  var dk = new Dropkick("#normal_select", {mobile: true});
   document.getElementById('normal_select').innerHTML = '<option>New Option</option>';
   assert.notEqual(dk.length, 1);
   dk.refresh();

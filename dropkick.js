@@ -23,7 +23,7 @@ var
       sel = document.getElementById( sel.substr( 1 ) );
     }
 
-    // On dk.refresh() and isMobile == true, opts is undefined
+    // isMobile === true and opts is undefined
     if (typeof(opts) === 'undefined') {
       if (j = sel.getAttribute("data-dkcacheid")) {
         opts = dkCache[ j ].data.settings;
@@ -55,9 +55,11 @@ var
 
   // DK default options
   defaults = {
-
     // Called once after the DK element is inserted into the DOM
     initialize: noop,
+
+    // Mobile default
+    mobile: false,
 
     // Called every time the select changes value
     change: noop,
